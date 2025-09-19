@@ -1,29 +1,209 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Jaan❤️</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Sacramento&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+  <title>For You 💖</title>
+  <meta name="description" content="A little surprise. Open on phone for best experience." />
+  <style>
+    /* Simple, romantic, mobile-first styles */
+    :root{
+      --bg:#0b0f17;
+      --card:#0f1720;
+      --accent:#ff6b9a;
+      --muted:#9aa4b2;
+      --glass: rgba(255,255,255,0.04);
+      --maxw:900px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,#071021 0%, #081426 40%, #0b0f17 100%);
+      color: #e6eef6;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:var(--maxw);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      border-radius:18px;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.7);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    header{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      padding:18px 20px;
+      background:linear-gradient(90deg, rgba(255,255,255,0.02), transparent);
+    }
+    .avatar{
+      width:56px; height:56px; border-radius:12px;
+      background: linear-gradient(135deg,var(--accent), #ff9ac0);
+      display:flex; align-items:center; justify-content:center;
+      font-weight:700; font-size:20px; color:white;
+      box-shadow: 0 6px 18px rgba(255,107,154,0.12);
+    }
+    .head-info h1{margin:0;font-size:18px;letter-spacing:0.2px}
+    .head-info p{margin:2px 0 0;font-size:13px;color:var(--muted)}
+
+    main{padding:18px 20px; display:flex;flex-direction:column; gap:14px;}
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:12px;
+      padding:12px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      align-items:center;
+      justify-content:center;
+      border:1px solid rgba(255,255,255,0.03);
+    }
+
+    /* container for embedded reel / fallback */
+    .media-wrap{
+      width:100%;
+      max-width:560px;
+      aspect-ratio: 9/16;
+      background:linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.55));
+      border-radius:12px;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+    }
+    .media-wrap iframe, .media-wrap video, .media-wrap img{
+      width:100%; height:100%; object-fit:cover; border:0;
+      display:block;
+    }
+
+    .overlay{
+      position:absolute; inset:12px; pointer-events:none;
+      display:flex; align-items:flex-end; justify-content:center;
+      padding-bottom:18px;
+      text-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    }
+    .cta{
+      pointer-events:auto;
+      display:inline-flex; gap:8px; align-items:center;
+      background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      padding:10px 14px; border-radius:999px; font-weight:600;
+      font-size:15px; color:white; text-decoration:none;
+      border:1px solid rgba(255,255,255,0.04);
+      backdrop-filter: blur(6px);
+    }
+
+    .notes{font-size:13px;color:var(--muted); text-align:center; padding:6px 8px}
+
+    footer{
+      padding:14px 20px;
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
+      font-size:13px;color:var(--muted);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.01));
+    }
+
+    /* small screens tweaks */
+    @media (max-width:520px){
+      .head-info h1{font-size:16px}
+      .avatar{width:48px;height:48px}
+      .media-wrap{max-width:420px}
+    }
+
+    /* subtle float animation for avatar */
+    @keyframes floaty { 0%{transform:translateY(0)}50%{transform:translateY(-6px)}100%{transform:translateY(0)} }
+    .avatar{animation: floaty 4s ease-in-out infinite}
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="heartbeat">Happy Birthday, [Arju]! 💖</h1>
-        <p>You are the most amazing person in my life. I love you forever my Bowjan💘</p>
-        <img src="girlfriend.jpg" alt="My Love" class="profile-pic">
-        <button id="surpriseBtn">Click Me for a Surprise!</button>
-        <div id="surprise" class="hidden">
-            🎉🎂 I LOVE YOU FOREVER! 🎂🎉
+  <div class="wrap" role="main">
+    <header>
+      <div class="avatar">U</div>
+      <div class="head-info">
+        <h1>For you — my love 💗</h1>
+        <p>Open this on your phone for the best view</p>
+      </div>
+    </header>
+
+    <main>
+      <div class="card">
+        <div class="media-wrap" id="mediaWrap">
+          <!-- Attempt to embed the reel with Instagram's embed endpoint.
+               If Instagram blocks embedding, the <iframe> will fail and
+               JS will show the fallback (image) below. -->
+          <iframe id="igEmbed"
+            src="https://www.instagram.com/reel/DI1L9PSy5e1/embed"
+            loading="lazy"
+            allow="autoplay; encrypted-media"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Instagram Reel"
+            style="border:0;">
+          </iframe>
+
+          <div class="overlay">
+            <a class="cta" id="openInIG" href="https://www.instagram.com/reel/DI1L9PSy5e1/" target="_blank" rel="noopener">
+              ▶︎ Open in Instagram
+            </a>
+          </div>
         </div>
-    </div>
 
-    <!-- Floating hearts container -->
-    <div class="hearts"></div>
+        <div class="notes" id="noteText">
+          If the reel doesn't appear here, tap "Open in Instagram" — or refresh. For best experience view on phone.
+        </div>
+      </div>
 
-    <!-- Optional music -->
-    <!-- <audio autoplay loop src="happy-birthday.mp3"></audio> -->
+      <div style="text-align:center;">
+        <p style="margin:0;color:var(--muted);font-size:14px">Made with love ❤️ — customize the message below</p>
+      </div>
+    </main>
 
-    <script src="script.js"></script>
+    <footer>
+      <div>Sent with a smile 😊</div>
+      <div>— Your name</div>
+    </footer>
+  </div>
+
+  <script>
+    // If embed fails to load after a short time, show a fallback image and keep the "Open in Instagram" CTA.
+    (function(){
+      const iframe = document.getElementById('igEmbed');
+      const wrap = document.getElementById('mediaWrap');
+      const note = document.getElementById('noteText');
+
+      // After 1.6s check if iframe contentWindow is accessible or has height;
+      setTimeout(() => {
+        let failed = false;
+        try {
+          // some browsers block cross-origin access and will throw, so check by computed height
+          if (!iframe || iframe.offsetHeight < 50) failed = true;
+        } catch(e){
+          // treat as failure (embedding blocked or failed)
+          failed = true;
+        }
+
+        if (failed) {
+          // remove iframe and show fallback image (you can replace src with a screenshot or gif)
+          iframe && iframe.remove();
+          const img = document.createElement('img');
+          img.alt = "Reel fallback";
+          img.loading = "lazy";
+          // Replace the fallback URL with your own image file placed in the repo if you want:
+          img.src = "https://via.placeholder.com/600x1067.png?text=Open+in+Instagram"; 
+          wrap.prepend(img);
+          note.textContent = "The reel couldn't be embedded here — tap 'Open in Instagram' to view on Instagram.";
+        }
+      }, 1600);
+    })();
+  </script>
 </body>
 </html>
